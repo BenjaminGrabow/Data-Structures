@@ -45,7 +45,7 @@ class DoublyLinkedList:
         self.tail = node
         self.length = 1 if node is not None else 0
 
-     def __len__(self):
+    def __len__(self):
         return self.length
 
     """Wraps the given value in a ListNode and inserts it 
