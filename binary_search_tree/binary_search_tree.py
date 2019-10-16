@@ -81,17 +81,28 @@ class BinarySearchTree:
             # move on to the next right node in the tree
             # setting the current node to the current nodes right
         # return our max value
-        pass
 
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach
     def for_each(self, cb):
-        # base case
-
-        # left case
-
-        # right case
-        pass
+        cb(self.value)
+        if self.right is None and self.left is None:
+            return
+        else:
+            if self.left != None:
+                self.left.for_each(cb)
+            if self.right != None:
+                 self.right.for_each(cb)
+        # # base case
+        # cb(self.value)
+        # if self.left == None and self.right == None:
+        #   return
+        # # left case
+        # elif self.left != None:
+        #   return self.left.for_each(cb)
+        # elif self.right != None:
+        #   return self.right.for_each(cb)
+        # # right case
 
     # DAY 2 Project -----------------------
 
