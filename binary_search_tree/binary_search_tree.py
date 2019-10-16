@@ -46,12 +46,12 @@ class BinarySearchTree:
         if self.value == target:
           return True
         # LEFT CASE
-        if self.value > target:
+        elif self.value > target:
           if self.left == None:
             return False
           return self.left.contains(target)
         # RIGHT CASE
-        elif self.value < target:
+        else: #(if self.value < target)
           if self.right == None:
             return False
           return self.right.contains(target)
@@ -60,10 +60,13 @@ class BinarySearchTree:
     def get_max(self):
         # BASE CASE 
         # if empty tree
+        if self.value == None:
             # return none
+            return None
         
         # RECURSIVE
         # if the the is no right value
+        # if 
             # return the root value
         # return the get max of the the right node
 
