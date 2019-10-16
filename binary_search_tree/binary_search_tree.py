@@ -19,7 +19,7 @@ class BinarySearchTree:
         # check if the new nodes value is less than our current ones value
         if value < self.value:
             # if the is no left child,
-            if self.left != None: 
+            if self.left: 
                 # place a new node here
                 self.left.insert(value)
             # otherwise
@@ -30,7 +30,7 @@ class BinarySearchTree:
         # check if the new nodes value is greater than or equal to the current parent value
         elif value > self.value:
             # if there is no right child here,
-            if self.right != None: 
+            if self.right: 
                 # place a new one
                 self.right.insert(value)
             # otherwise
@@ -92,10 +92,10 @@ class BinarySearchTree:
             return
         else:
         #  left case
-            if self.left != None:
+            if self.left:
                 self.left.for_each(cb)
         #   right case
-            if self.right != None:
+            if self.right:
                  self.right.for_each(cb)
         
     # DAY 2 Project -----------------------
@@ -104,9 +104,8 @@ class BinarySearchTree:
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
       if node:
-
-      
            node.in_order_print(node.left)
+
            print(node.value)
          
            node.in_order_print(node.right)
@@ -128,9 +127,8 @@ class BinarySearchTree:
     # Print In-order recursive DFT
     def pre_order_dft(self, node):
          if node:
-
-      
            print(node.value)
+
            node.pre_order_dft(node.left)
          
            node.pre_order_dft(node.right)
@@ -138,10 +136,9 @@ class BinarySearchTree:
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
         if node:
-
-      
            node.post_order_dft(node.left)
          
            node.post_order_dft(node.right)
+          
            print(node.value)
 
