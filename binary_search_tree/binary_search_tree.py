@@ -66,9 +66,11 @@ class BinarySearchTree:
         
         # RECURSIVE
         # if the the is no right value
-        # if 
+        if self.right == None: 
             # return the root value
+            return self.value
         # return the get max of the the right node
+        return self.right.get_max()
 
         # ITTERATIVE
         # set a max value variable to keep track of max value
