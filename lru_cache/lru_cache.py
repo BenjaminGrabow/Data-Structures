@@ -1,3 +1,5 @@
+import collections
+
 class LRUCache:
     """
     Our LRUCache class keeps track of the max number of nodes it
@@ -7,7 +9,10 @@ class LRUCache:
     to every node stored in the cache.
     """
     def __init__(self, limit=10):
-        pass
+        self.limit = limit
+        self.all_elements = {}
+        self.order_of_elements = collections.deque([], limit)
+
 
     """
     Retrieves the value associated with the given key. Also
@@ -17,7 +22,10 @@ class LRUCache:
     key-value pair doesn't exist in the cache.
     """
     def get(self, key):
-        pass
+        if key in self.all_elements:
+            self.order_of_elements.remove(key)
+            self.order_of_elements.append(key)
+            return self.all_elements[key]
 
     """
     Adds the given key-value pair to the cache. The newly-
@@ -30,4 +38,11 @@ class LRUCache:
     the newly-specified value.
     """
     def set(self, key, value):
-        pass
+        if key not in self.all_elements and len(self.order_of_elements) == self.limit:
+            del self.all_elements[self.order_of_elements[0]]
+
+        elif key in self.all_elements:
+            self.order_of_elements.remove(key)
+
+        self.all_elements[key] = value
+        self.order_of_elements.append(key)
