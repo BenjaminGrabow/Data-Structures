@@ -86,24 +86,18 @@ class BinarySearchTree:
     # You may use a recursive or iterative approach
     def for_each(self, cb):
         cb(self.value)
+        # # base case
         if self.right is None and self.left is None:
+        #   return
             return
         else:
+        #  left case
             if self.left != None:
                 self.left.for_each(cb)
+        #   right case
             if self.right != None:
                  self.right.for_each(cb)
-        # # base case
-        # cb(self.value)
-        # if self.left == None and self.right == None:
-        #   return
-        # # left case
-        # elif self.left != None:
-        #   return self.left.for_each(cb)
-        # elif self.right != None:
-        #   return self.right.for_each(cb)
-        # # right case
-
+        
     # DAY 2 Project -----------------------
 
     # Print all the values in order from low to high
