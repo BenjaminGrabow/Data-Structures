@@ -15,28 +15,47 @@ class BinarySearchTree:
 
     # Insert the given value into the tree
     def insert(self, value):
-        # LEFT CASE
-        # check if the new nodes value is less than our current ones value
-        if value < self.value:
-            # if the is no left child,
-            if self.left: 
-                # place a new node here
-                self.left.insert(value)
-            # otherwise
-            else:
-                # repeat process for left
-                self.left = BinarySearchTree(value)
-        # RIGHT CASE
-        # check if the new nodes value is greater than or equal to the current parent value
-        elif value > self.value:
-            # if there is no right child here,
-            if self.right: 
-                # place a new one
-                self.right.insert(value)
-            # otherwise
-            else:
-                # repeat process right
-                self.right = BinarySearchTree(value)
+        # # LEFT CASE
+        # # check if the new nodes value is less than our current ones value
+        # if value < self.value:
+        #     # if the is no left child,
+        #     if self.left: 
+        #         # place a new node here
+        #         self.left.insert(value)
+        #     # otherwise
+        #     else:
+        #         # repeat process for left
+        #         self.left = BinarySearchTree(value)
+        # # RIGHT CASE
+        # # check if the new nodes value is greater than or equal to the current parent value
+        # elif value > self.value:
+        #     # if there is no right child here,
+        #     if self.right: 
+        #         # place a new one
+        #         self.right.insert(value)
+        #     # otherwise
+        #     else:
+        #         # repeat process right
+        #         self.right = BinarySearchTree(value)
+        
+        # iterative approach
+        new_node = BinarySearchTree(value)
+        current_node = self
+        parent = None
+        
+        while current_node:
+          parent = current_node
+
+          if current_node.value > value:
+            current_node = current_node.left
+          
+          elif current_node.value < value:
+            current_node = current_node.right 
+          
+        if parent.value > value:
+          parent.left = new_node
+        elif parent.value < value:
+          parent.right = new_node
         
 
     # Return True if the tree contains the value
