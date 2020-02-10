@@ -15,28 +15,47 @@ class BinarySearchTree:
 
     # Insert the given value into the tree
     def insert(self, value):
-        # LEFT CASE
-        # check if the new nodes value is less than our current ones value
-        if value < self.value:
-            # if the is no left child,
-            if self.left: 
-                # place a new node here
-                self.left.insert(value)
-            # otherwise
-            else:
-                # repeat process for left
-                self.left = BinarySearchTree(value)
-        # RIGHT CASE
-        # check if the new nodes value is greater than or equal to the current parent value
-        elif value > self.value:
-            # if there is no right child here,
-            if self.right: 
-                # place a new one
-                self.right.insert(value)
-            # otherwise
-            else:
-                # repeat process right
-                self.right = BinarySearchTree(value)
+        # # LEFT CASE
+        # # check if the new nodes value is less than our current ones value
+        # if value < self.value:
+        #     # if the is no left child,
+        #     if self.left: 
+        #         # place a new node here
+        #         self.left.insert(value)
+        #     # otherwise
+        #     else:
+        #         # repeat process for left
+        #         self.left = BinarySearchTree(value)
+        # # RIGHT CASE
+        # # check if the new nodes value is greater than or equal to the current parent value
+        # elif value > self.value:
+        #     # if there is no right child here,
+        #     if self.right: 
+        #         # place a new one
+        #         self.right.insert(value)
+        #     # otherwise
+        #     else:
+        #         # repeat process right
+        #         self.right = BinarySearchTree(value)
+        
+        # iterative approach
+        new_node = BinarySearchTree(value)
+        current_node = self
+        parent = None
+        
+        while current_node:
+          parent = current_node
+
+          if current_node.value > value:
+            current_node = current_node.left
+          
+          elif current_node.value < value:
+            current_node = current_node.right 
+          
+        if parent.value > value:
+          parent.left = new_node
+        elif parent.value < value:
+          parent.right = new_node
         
 
     # Return True if the tree contains the value
@@ -113,13 +132,41 @@ class BinarySearchTree:
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        pass
+        queue = Queue()
         
+        queue.enqueue(node)
+
+        while queue.len():
+          current_node = queue.dequeue()
+
+          print(current_node.value)
+
+          if current_node.left:
+            queue.enqueue(current_node.left)
+
+          if current_node.right:
+            queue.enqueue(current_node.right)
+          
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        pass
+        stack = Stack()
+
+        stack.push(node)
+
+        while stack.len():
+          current_node = stack.pop()
+
+          print(current_node.value)
+
+          
+          if current_node.left:
+            stack.push(current_node.left)
+
+          if current_node.right:
+            stack.push(current_node.right)
+
 
     # STRETCH Goals -------------------------
     # Note: Research may be required
